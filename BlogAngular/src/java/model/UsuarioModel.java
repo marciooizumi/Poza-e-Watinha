@@ -16,11 +16,17 @@ public class UsuarioModel {
 
     public void inserir(String nome, String senha, String email) {
         Usuario usu = new Usuario();
-        
+
         if (nome.equals("") || senha.equals("") || email.equals("")) {
             return;
         }
 
+        try {
+            senha = criptografar(senha);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(UsuarioModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         usu.setSenha(senha);
         usu.setNome(nome);
         usu.setEmail(email);
@@ -32,16 +38,15 @@ public class UsuarioModel {
         em.getTransaction().commit();
         em.close();
     }
-    
 
-    public void delete(Usuario usu){
+    public void delete(Usuario usu) {
         EntityManager em = this.getFactory();
         em.getTransaction().begin();
         em.remove(usu);
         em.getTransaction().commit();
         em.close();
     }
-    
+
     public String criptografar(String senha) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
@@ -51,9 +56,9 @@ public class UsuarioModel {
         }
         return s;
     }
-    
+
     public Usuario verLogin(String usu, String senha) throws NoSuchAlgorithmException {
-        
+
         try {
             EntityManager em = this.getFactory();
             senha = criptografar(senha);
@@ -65,11 +70,11 @@ public class UsuarioModel {
             return null;
         }
     }
-            
 
-   public EntityManager getFactory () {
-        if (UsuarioModel.factory == null)
+    public EntityManager getFactory() {
+        if (UsuarioModel.factory == null) {
             UsuarioModel.factory = Persistence.createEntityManagerFactory("xrmiPU");
+        }
         return UsuarioModel.factory.createEntityManager();
     }
 }

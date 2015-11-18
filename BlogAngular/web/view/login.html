@@ -18,7 +18,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- Style --> <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
         <script></script>
     </head>
-    <body>
+    <body ng-controller="LoginController as logController">
         <div class="container">
             <h1>Bem-vindo ao Blog Abobrinha</h1>
             <div class="contact-form">
@@ -27,7 +27,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>	 
                 <div class="signin">
                     <form>
-                        <input type="text" class="user" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {
+                        <input ng-model="logController."
+                            type="text" 
+                               class="user" 
+                               value="Username" 
+                               onfocus="this.value = '';" 
+                               onblur="if (this.value == '') {
                           this.value = 'Username';
                       }" />
                         <input type="password" class="pass" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {

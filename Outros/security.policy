@@ -1,0 +1,14 @@
+grant{
+    permission java.net.SocketPermission "192.168.1.103:1024-", "accept, resolve";
+    permission java.net.SocketPermission "192.168.1.102:1099", "listen, resolve";
+    permission java.net.SocketPermission "127.0.0.1:5432", "connect, resolve";
+
+    permission java.io.FilePermission "/-", "read";
+    permission java.lang.RuntimePermission "createClassLoader";
+    permission java.lang.RuntimePermission "setContextClassLoader";
+    permission java.util.PropertyPermission "jboss.i18n.generate-proxies", "write";
+    permission java.util.PropertyPermission "hibernate.enable_specj_proprietary_syntax", "read";
+    permission java.util.PropertyPermission "org.postgresql.forceBinary", "read";
+    permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
+
+};                                                              
