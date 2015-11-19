@@ -26,7 +26,7 @@ public class UsuarioModel {
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(UsuarioModel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         usu.setSenha(senha);
         usu.setNome(nome);
         usu.setEmail(email);
@@ -57,11 +57,17 @@ public class UsuarioModel {
         return s;
     }
 
-    public Usuario verLogin(String usu, String senha) throws NoSuchAlgorithmException {
+    public Usuario verLogin(String usu, String senha) {
 
         try {
-            EntityManager em = this.getFactory();
             senha = criptografar(senha);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(UsuarioModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+
+            EntityManager em = this.getFactory();
             Usuario usuario = (Usuario) em.createQuery("SELECT u from Usuario u where u.login ="
                     + ":usu and u.senha =:senha")
                     .setParameter("usu", usu).setParameter("senha", senha).getSingleResult();

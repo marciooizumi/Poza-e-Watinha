@@ -16,6 +16,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- //For-Mobile-Apps -->
         <!-- Style --> <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+        <script type="text/javascript" charset="utf-8" src="js/angular.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/angular-animate.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="view/LoginController.js"></script>
         <script></script>
     </head>
     <body ng-controller="LoginController as logController">
@@ -25,23 +28,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="profile-pic">
                     <img src="images/abobrinha_1.png" width="110px" alt="User Icon"/>
                 </div>	 
-                <div class="signin">
-                    <form>
-                        <input ng-model="logController."
-                            type="text" 
+                <form>
+                    <div class="signin">
+                        <input ng-model="logController.login"
+                               type="text" 
                                class="user" 
                                value="Username" 
                                onfocus="this.value = '';" 
-                               onblur="if (this.value == '') {
-                          this.value = 'Username';
-                      }" />
-                        <input type="password" class="pass" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {
-                              this.value = 'Password';
-                          }" />
+                               onblur="if (this.value == '') {this.value = 'Username'; }" />
+                        <input ng-model="logController.senha" 
+                               type="password" 
+                               class="pass" 
+                               value="Password" 
+                               onfocus="this.value = '';" 
+                               onblur="if (this.value == '') {this.value = 'Password'; }" />
                         <p><a href="#">Forgot Password?</a></p>		  
-                    </form>
-                </div>	 
-                <input type="submit" value="Login" />
+
+                        <!--<p>{{logController.msg}}</p>-->
+                        <div id="texto"></div>
+                    </div>	 
+                    <input type="submit" ng-click="logController.verLogin()" value="Login" />
+                </form>
             </div>
         </div>
         <div class="footer">
