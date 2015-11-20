@@ -1,5 +1,6 @@
 package rmi.servidor;
 
+import java.io.Serializable;
 import model.dao.UsuarioDAO;
 import java.rmi.RMISecurityManager;
 import java.rmi.registry.LocateRegistry;

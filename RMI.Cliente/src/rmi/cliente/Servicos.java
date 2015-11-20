@@ -4,13 +4,14 @@ import interfaces.IUsuarioDAO;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Usuario;
 
-public class Servicos {
+public class Servicos{
 
     IUsuarioDAO usuarioDAO;
     BufferedReader bufferRead;

@@ -1,5 +1,7 @@
 package rmi.cliente;
 
+import java.io.Serializable;
+
 public class RMICliente {
 
     public static void main(String[] args) {
