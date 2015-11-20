@@ -68,7 +68,7 @@ public class UsuarioModel {
         try {
 
             EntityManager em = this.getFactory();
-            Usuario usuario = (Usuario) em.createQuery("SELECT u from Usuario u where u.login ="
+            Usuario usuario = (Usuario) em.createQuery("SELECT u from Usuario u where u.nome ="
                     + ":usu and u.senha =:senha")
                     .setParameter("usu", usu).setParameter("senha", senha).getSingleResult();
             return usuario;

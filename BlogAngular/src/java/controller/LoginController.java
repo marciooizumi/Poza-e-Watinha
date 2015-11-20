@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +20,13 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         UsuarioModel usuM = new UsuarioModel();
         Usuario usuario = usuM.verLogin(req.getParameter("buscaLogin"), req.getParameter("buscaSenha"));
+        if(usuario == null)
+            return;
+        JsonObjectBuilder usuarioJson = Json.createObjectBuilder()
+                .add("nome", usuario.getNome()).add("id", usuario.getId());
+        
+        res.setContentType("application/json");
+        res.getWriter().print(usuarioJson);
         
     }
 

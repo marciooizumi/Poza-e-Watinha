@@ -3,24 +3,34 @@ angular.module("loginApp", ["ngAnimate"])
                 var self = this;
                 self.login = "";
                 self.senha = "";
-                self.usuario = "";
+                self.usuario = null;
                 self.msg = "";
 
 
                 self.verLogin = function () {
-//                    console.log(self.login);
-//                    document.getElementById("texto").innerHTML = "Ate aqui tudo bem";
-//                    $http.get("../login", {params: {buscaLogin: self.login, buscaSenha: self.senha}})
+                    console.log(self.login);
+
+//                    $http.get("login", {params: {buscaLogin: self.login, buscaSenha: self.senha}})
 //                            .then(function (response) {
 //                                self.usuario = response.data;
-//                                if (self.usuario != null) {
-////                                    self.msg = "Login efetuado com sucesso!";
-//                                    window.location = "/view/noticias.html";
-//                                } else {
-//                                    self.msg = "Usuario ou senha inválidos!"
-//                                }
+//                                document.getElementById("texto").innerHTML = self.usuario;
+////                                if (self.usuario != null) {
+//////                                    self.msg = "Login efetuado com sucesso!";
+////                                    window.location = "/view/noticias.html";
+////                                } else {
+////                                     document.getElementById("texto").innerHTML = "Usuario ou senha inválidos!"
+////                                }   
+//
+//  //                              if (response.success) {
+//  //                                  self.msg = "Login efetuado com sucesso!";
+//  //                                  window.location = "/view/noticias.html";
+//  //                              } else {
+//  //                                  document.getElementById("texto").innerHTML = "Usuario ou senha inválidos!"
+//  //                              }
+//
+//
+//
 //                            });
-                    window.location = "/view/noticias.html";
                 };
 
 
