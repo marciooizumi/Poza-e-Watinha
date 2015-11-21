@@ -3,7 +3,9 @@ package model;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.logging.Level;
+
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -66,11 +68,11 @@ public class UsuarioModel {
         }
 
         try {
-
             EntityManager em = this.getFactory();
             Usuario usuario = (Usuario) em.createQuery("SELECT u from Usuario u where u.nome ="
                     + ":usu and u.senha =:senha")
                     .setParameter("usu", usu).setParameter("senha", senha).getSingleResult();
+            em.close();
             return usuario;
         } catch (NoResultException e) {
             return null;
@@ -82,5 +84,17 @@ public class UsuarioModel {
             UsuarioModel.factory = Persistence.createEntityManagerFactory("xrmiPU");
         }
         return UsuarioModel.factory.createEntityManager();
+    }
+
+    public List<Usuario> listar(String busca) {
+        EntityManager em = this.getFactory();
+
+        @SuppressWarnings("unchecked")
+        List<Usuario> lista = em.createQuery("SELECT u FROM Usuario u WHERE u.nome like :busca")
+            .setParameter("busca", busca + "%")
+            .getResultList();
+
+        em.close();
+        return lista;
     }
 }

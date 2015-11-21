@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Usuario;
 import model.UsuarioModel;
+import util.UsuarioJSON;
 
 @WebServlet(name = "LoginController", urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
@@ -18,16 +19,17 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
+        
         UsuarioModel usuM = new UsuarioModel();
+
         Usuario usuario = usuM.verLogin(req.getParameter("buscaLogin"), req.getParameter("buscaSenha"));
-        if(usuario == null)
+        if (usuario == null) {
             return;
-        JsonObjectBuilder usuarioJson = Json.createObjectBuilder()
-                .add("nome", usuario.getNome()).add("id", usuario.getId());
+        }
         
         res.setContentType("application/json");
-        res.getWriter().print(usuarioJson);
-        
+        res.getWriter().print(new UsuarioJSON().convertUser(usuario.getId(), usuario.getNome()));
+
     }
 
     @Override

@@ -3,34 +3,36 @@ angular.module("loginApp", ["ngAnimate"])
                 var self = this;
                 self.login = "";
                 self.senha = "";
-                self.usuario = null;
+                self.usuario = "";
                 self.msg = "";
 
 
                 self.verLogin = function () {
                     console.log(self.login);
 
-//                    $http.get("login", {params: {buscaLogin: self.login, buscaSenha: self.senha}})
-//                            .then(function (response) {
-//                                self.usuario = response.data;
-//                                document.getElementById("texto").innerHTML = self.usuario;
-////                                if (self.usuario != null) {
-//////                                    self.msg = "Login efetuado com sucesso!";
-////                                    window.location = "/view/noticias.html";
-////                                } else {
-////                                     document.getElementById("texto").innerHTML = "Usuario ou senha inválidos!"
-////                                }   
-//
-//  //                              if (response.success) {
-//  //                                  self.msg = "Login efetuado com sucesso!";
-//  //                                  window.location = "/view/noticias.html";
-//  //                              } else {
-//  //                                  document.getElementById("texto").innerHTML = "Usuario ou senha inválidos!"
-//  //                              }
-//
-//
-//
-//                            });
+                    $http.get("login", {params: {buscaLogin: self.login, buscaSenha: self.senha}})
+                            .then(function (response) {
+                                self.usuario = response.data;
+                                document.getElementById("texto").innerHTML = self.usuario;
+                                if (self.usuario != null) {
+//                                    self.msg = "Login efetuado com sucesso!";
+                                    window.location = "view/noticias.html";
+//                                    document.getElementById("texto").innerHTML = "chegou até o final goku!";
+                                } else {
+                                    document.getElementById("texto").innerHTML = "Usuario ou senha inválidos!"
+                                }
+
+//                                document.getElementById("texto").innerHTML = "chegou até o final goku!"
+//                                if (response.success) {
+//                                    self.msg = "Login efetuado com sucesso!";
+//                                    window.location = "view/noticias.html";
+//                                } else {
+//                                    document.getElementById("texto").innerHTML = "Usuario ou senha inválidos!"
+//                                }
+
+
+
+                            });
                 };
 
 
