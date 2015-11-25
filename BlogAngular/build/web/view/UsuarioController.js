@@ -5,6 +5,8 @@ angular.module("usuarioApp", ["ngAnimate"])
                 self.buscaSenha = "";
                 self.buscaEmail = "";
 
+
+
 //            self.frutas = [];
 //            self.frutas_removidas = [];
 
@@ -14,8 +16,16 @@ angular.module("usuarioApp", ["ngAnimate"])
 //                 });
 
                 self.add = function () {
-                    
-                    //if (ev.keyCode === 13) {
+                    // document.getElementById("texto").innerHTML = "Preencha os campos corretamente";
+                    if (self.buscaNome === "" || self.buscaNome === null ||
+                            self.buscaSenha === "" || self.buscaSenha === null ||
+                            self.buscaEmail === "" || self.buscaEmail === null) {
+                        document.getElementById("texto").innerHTML = "Preencha os campos corretamente";
+
+                    } else {
+
+
+                        //if (ev.keyCode === 13) {
 //                        document.getElementById("texto").innerHTML = "Ate aqui tudo bem";
                         $http.post("../usuario", "nome=" + self.buscaNome + "&senha=" + self.buscaSenha + "&email=" + self.buscaEmail + "&method=adicionar", {
                             headers: {
@@ -28,7 +38,8 @@ angular.module("usuarioApp", ["ngAnimate"])
                             self.buscaEmail = "";
                             window.location = "../";
                         });
-                 //   }
+                    }
+                    //   }
                 };
 
 //            self.search = function () {
