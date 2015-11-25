@@ -4,14 +4,13 @@ import interfaces.IUsuarioDAO;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Serializable;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Usuario;
 
-public class Servicos{
+public class Servicos {
 
     IUsuarioDAO usuarioDAO;
     BufferedReader bufferRead;
@@ -38,6 +37,7 @@ public class Servicos{
 
             usuario.setNome(nome);
             usuario.setEmail(email);
+            usuario.setSenha("123");
 
             usuarioDAO.inserir(usuario);
             System.out.println("Usuario inserido com sucesso!");

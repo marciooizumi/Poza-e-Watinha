@@ -9,7 +9,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class RmiUtil {
-    	private static String enderecoServidor = "localhost";
+    	private static String enderecoServidor = "127.0.0.1";
 	private static int porta = 1099;
 	private static Registry registry;
 

@@ -17,6 +17,7 @@ public class UsuarioDAO extends UnicastRemoteObject
 
     @Override
     public void inserir(Usuario usuario) throws RemoteException {
+        System.out.println("chegou aqui!!!!!");
         EntityManager em = JpaProvider.getInstance().createEntityManager();
         em.getTransaction().begin();
         em.persist(usuario);
