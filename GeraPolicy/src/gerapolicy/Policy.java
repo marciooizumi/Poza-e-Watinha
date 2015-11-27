@@ -50,6 +50,7 @@ public class Policy extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jCheckBox12 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,14 +87,16 @@ public class Policy extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox12.setText("Grant AllPermission");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jCheckBox6)
@@ -103,7 +106,7 @@ public class Policy extends javax.swing.JFrame {
                             .addComponent(jCheckBox2)
                             .addComponent(jCheckBox1)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGap(18, 45, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,10 +116,12 @@ public class Policy extends javax.swing.JFrame {
                                     .addComponent(jCheckBox9)
                                     .addComponent(jCheckBox10)
                                     .addComponent(jCheckBox11))
-                                .addGap(76, 76, 76))
+                                .addGap(67, 67, 67))
                             .addComponent(jTextField2)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
@@ -154,7 +159,9 @@ public class Policy extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jCheckBox12))
                 .addContainerGap())
         );
 
@@ -165,58 +172,77 @@ public class Policy extends javax.swing.JFrame {
         if (jTextField1.getText().equals("") || jTextField2.getText().equals("")) {
             JOptionPane.showConfirmDialog(this, "Preencha os campos corretamente!", "Policy", JOptionPane.CLOSED_OPTION, JOptionPane.CLOSED_OPTION);
         } else {
-            
-            try {            
-                FileWriter arq = new FileWriter("C:\\Users\\Marcelo\\Documents\\UTFPR\\6Semestre\\SistemasDistribuidos\\Trabalho\\policyGerado\\security.policy");
+
+            try {
+                FileWriter arq = new FileWriter("C:\\Users\\Márcio\\Documents\\GitHub\\Poza-e-Watinha\\RMI.Servidor\\security.policy");
                 PrintWriter gravarArq = new PrintWriter(arq);
                 gravarArq.printf("grant {");
-                
-                gravarArq.printf("\r\n\r\n//Permissão para todos os usuários");
-                gravarArq.printf("\r\n permission java.security.AllPermission;");
+
                 
                 
                 gravarArq.printf("\r\n\r\n//Permissão da conexão - Servidor");
-                if (jCheckBox1.isSelected())
-                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" +  jTextField1.getText() + "\", \"connect\";");
-                if (jCheckBox2.isSelected())
-                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" +  jTextField1.getText() + "\", \"accept\";");
-                if (jCheckBox3.isSelected())
-                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" +  jTextField1.getText() + "\", \"listen\";");
-                if (jCheckBox4.isSelected())
-                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" +  jTextField1.getText() + "\", \"resolve\";");
-                
+                if (jCheckBox1.isSelected()) {
+                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" + jTextField1.getText() + "\", \"connect\";");
+                }
+                if (jCheckBox2.isSelected()) {
+                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" + jTextField1.getText() + "\", \"accept\";");
+                }
+                if (jCheckBox3.isSelected()) {
+                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" + jTextField1.getText() + "\", \"listen\";");
+                }
+                if (jCheckBox4.isSelected()) {
+                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" + jTextField1.getText() + "\", \"resolve\";");
+                }
+
                 gravarArq.printf("\r\n\r\n//Permissão para o servidor poder ler e escrever");
-                if (jCheckBox5.isSelected())
+                if (jCheckBox5.isSelected()) {
                     gravarArq.printf("\r\n permission java.util.PropertyPermission \"*\", \"write\";");
-                if (jCheckBox6.isSelected())
+                }
+                if (jCheckBox6.isSelected()) {
                     gravarArq.printf("\r\n permission java.util.PropertyPermission \"*\", \"read\";");
-                
-                
+                }
+
                 gravarArq.printf("\r\n\r\n//Permissão da conexão - Cliente");
-                if (jCheckBox7.isSelected())
-                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" +  jTextField2.getText() + "-\", \"connect\";");
-                if (jCheckBox8.isSelected())
-                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" +  jTextField2.getText() + "-\", \"accept\";");
-                if (jCheckBox9.isSelected())
-                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" +  jTextField2.getText() + "-\", \"listen\";");
-                if (jCheckBox10.isSelected())
-                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" +  jTextField2.getText() + "-\", \"resolve\";");
+                if (jCheckBox7.isSelected()) {
+                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" + jTextField2.getText() + "-\", \"connect\";");
+                }
+                if (jCheckBox8.isSelected()) {
+                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" + jTextField2.getText() + "-\", \"accept\";");
+                }
+                if (jCheckBox9.isSelected()) {
+                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" + jTextField2.getText() + "-\", \"listen\";");
+                }
+                if (jCheckBox10.isSelected()) {
+                    gravarArq.printf("\r\n permission java.net.SocketPermission \"" + jTextField2.getText() + "-\", \"resolve\";");
+                }
+
                 
-                gravarArq.printf("\r\n\r\n//Permissão para o cliente poder ler");
-                if (jCheckBox11.isSelected())
+                if (jCheckBox11.isSelected()) {
+                    gravarArq.printf("\r\n\r\n//Permissão para o cliente poder ler");
                     gravarArq.printf("\r\n permission java.io.FilePermission \"\\-\", \"read\";");
+                }
+
                 
+                if (jCheckBox12.isSelected()) {
+                    gravarArq.printf("\r\n\r\n//Permissão para todos os usuários");
+                    gravarArq.printf("\r\n permission java.security.AllPermission;");
+                }
+
+                /*------- estas linhas de código não foram necessárias neste projeto ---------------
                 
+                gravarArq.printf("\r\n permission java.net.SocketPermission \"127.0.0.1:5432\", \"connect, resolve\";");
                 gravarArq.printf("\r\n\r\n//Permissão para a biblioteca do hibernate");
-                gravarArq.printf("\r\n permission java.lang.RuntimePermission \"createClassLoader\"; ");               
+                gravarArq.printf("\r\n permission java.lang.RuntimePermission \"createClassLoader\"; ");
                 gravarArq.printf("\r\n permission java.lang.RuntimePermission \"setContextClassLoader\"; ");
                 gravarArq.printf("\r\n permission java.util.PropertyPermission \"jboss.i18n.generate-proxies\", \"write\"; ");
                 gravarArq.printf("\r\n permission java.util.PropertyPermission \"hibernate.enable_specj_proprietary_syntax\", \"read\"; ");
                 gravarArq.printf("\r\n permission java.util.PropertyPermission \"org.postgresql.forceBinary\", \"read\"; ");
                 gravarArq.printf("\r\n permission java.lang.reflect.ReflectPermission \"suppressAccessChecks\"; ");
-
+               
+                */
                 
-                gravarArq.printf("\r\n\r\n}");
+                
+                gravarArq.printf("\r\n\r\n};");
                 arq.close();
             } catch (IOException ex) {
                 Logger.getLogger(Policy.class.getName()).log(Level.SEVERE, null, ex);
@@ -265,6 +291,7 @@ public class Policy extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox10;
     private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox12;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
