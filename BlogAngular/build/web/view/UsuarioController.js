@@ -32,11 +32,17 @@ angular.module("usuarioApp", ["ngAnimate"])
                                 "Content-Type": "application/x-www-form-urlencoded"
                             }
                         }).then(function (response) {
-                            //self.frutas.push({nome: self.busca, hidden: ""});
-                            self.buscaNome = "";
-                            self.buscaSenha = "";
-                            self.buscaEmail = "";
-                            window.location = "../";
+                            console.log(response.data);
+                            if (response.data !== "false") {
+                                //self.frutas.push({nome: self.busca, hidden: ""});
+                                self.buscaNome = "";
+                                self.buscaSenha = "";
+                                self.buscaEmail = "";
+                                window.location = "../";
+                            } else {
+                                document.getElementById("texto").innerHTML = "Este usuário já existe";
+                                self.buscaNome = "";
+                            }
                         });
                     }
                     //   }

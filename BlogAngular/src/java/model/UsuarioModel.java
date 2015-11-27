@@ -16,11 +16,14 @@ public class UsuarioModel {
 
     private static EntityManagerFactory factory = null;
 
-    public void inserir(String nome, String senha, String email) {
+    public Boolean inserir(String nome, String senha, String email) {
         Usuario usu = new Usuario();
 
-        if (nome.equals("") || senha.equals("") || email.equals("")) {
-            return;
+//        if (nome.equals("") || senha.equals("") || email.equals("")) {
+//            return true;
+//        }
+        if (verUsuario(nome) != null) {
+            return false;
         }
 
         try {
@@ -39,6 +42,8 @@ public class UsuarioModel {
         em.persist(usu);
         em.getTransaction().commit();
         em.close();
+
+        return true;
     }
 
     public void delete(Usuario usu) {
@@ -50,6 +55,7 @@ public class UsuarioModel {
     }
 
     public String criptografar(String senha) throws NoSuchAlgorithmException {
+        senha += "abobrinha";
         MessageDigest md = MessageDigest.getInstance("MD5");
         BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
         String s = hash.toString(16);
@@ -72,7 +78,21 @@ public class UsuarioModel {
             Usuario usuario = (Usuario) em.createQuery("SELECT u from Usuario u where u.nome like "
                     + ":usu and u.senha like :senha")
                     .setParameter("usu", usu).setParameter("senha", senha).getSingleResult();
-            
+
+            em.close();
+            return usuario;
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public Usuario verUsuario(String usu) {
+
+        try {
+            EntityManager em = this.getFactory();
+            Usuario usuario = (Usuario) em.createQuery("SELECT u from Usuario u where u.nome like :usu")
+                    .setParameter("usu", usu).getSingleResult();
+
             em.close();
             return usuario;
         } catch (NoResultException e) {
@@ -91,9 +111,9 @@ public class UsuarioModel {
         EntityManager em = this.getFactory();
 
         @SuppressWarnings("unchecked")
-        List<Usuario> lista = em.createQuery("SELECT u FROM Usuario u WHERE u.nome like :busca")
-            .setParameter("busca", busca + "%")
-            .getResultList();
+        //List<Usuario> lista = em.createQuery("SELECT u FROM Usuario u WHERE u.nome like :busca")
+        List<Usuario> lista = em.createQuery("SELECT u FROM Usuario u")
+                .getResultList();
 
         em.close();
         return lista;

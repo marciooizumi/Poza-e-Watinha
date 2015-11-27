@@ -4,12 +4,28 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
+<!--<html>
+
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+        <script type="text/javascript" charset="utf-8" src="angular.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="angular-animate.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="NoticiasController.js"></script>
+    </head>
+    <body>
+        <h1>parabéns</h1>
+    </body>-->
+
+
 <html ng-app="noticiasApp">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Style  <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />-->
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
         <script type="text/javascript" charset="utf-8" src="angular.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="angular-animate.min.js"></script>
         <script type="text/javascript" charset="utf-8" src="NoticiasController.js"></script>
@@ -17,10 +33,10 @@ and open the template in the editor.
     <body ng-controller="NoticiasController as controller">
         <h1>Parabéns, vc logou com sucesso!!!</h1>
 
-            <ul>
-                <li ng-repeat="usuario in controller.users" class="{{usuario.hidden}}">
-                    {{usuario.nome}}
-                </li>
-            </ul>
+        <ul>
+            <li ng-repeat="usuario in controller.users" class="{{usuario.hidden}}">
+                {{usuario.nome}}
+            </li>
+        </ul>
     </body>
 </html>

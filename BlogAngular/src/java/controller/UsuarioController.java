@@ -27,24 +27,27 @@ public class UsuarioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("entrou no get");
         UsuarioModel uModel = new UsuarioModel();
-        List <Usuario> lista = uModel.listar(request.getParameter("busca"));
+        List<Usuario> lista = uModel.listar(request.getParameter("busca"));
         response.setContentType("application/json");
         response.getWriter().print((new UsuarioJSON()).convert(lista));
+        System.out.println("saindo do get");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UsuarioModel usuModel = new UsuarioModel();
-
+        Boolean result = false;
         System.out.println("Nome: " + request.getParameter("nome"));
         if (request.getParameter("method").equals("adicionar")) {
-            usuModel.inserir(request.getParameter("nome"), 
-                    request.getParameter("senha"), 
+            result = usuModel.inserir(request.getParameter("nome"),
+                    request.getParameter("senha"),
                     request.getParameter("email"));
         }
-        
+
+        response.getWriter().print(result);
 
     }
 

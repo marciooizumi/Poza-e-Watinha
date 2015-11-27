@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Usuario;
 import model.UsuarioModel;
 import util.UsuarioJSON;
@@ -45,6 +46,8 @@ public class LoginController extends HttpServlet {
         if (usuario != null) {
             response.setContentType("application/json");
             response.getWriter().print(new UsuarioJSON().convertUser(usuario.getId(), usuario.getNome()));
+            HttpSession session = request.getSession();
+            session.setAttribute("usuario", usuario);
         }else{
             System.out.println("Usuario null");
         }

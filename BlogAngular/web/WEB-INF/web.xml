@@ -8,14 +8,14 @@
     <welcome-file-list>
         <welcome-file>/view/login.html</welcome-file>
     </welcome-file-list>
-     <!-- Login filter -->
-<!--    <filter>
+     
+    <filter>
         <filter-name>LoginFilter</filter-name>
         <filter-class>controller.LoginFilter</filter-class>
     </filter>
-     Set the login filter to secure all the pages in the /secured/* path of the application  
+
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
-        <url-pattern>/view/noticias.html</url-pattern>
-    </filter-mapping>-->
+        <url-pattern>/view/*</url-pattern>
+    </filter-mapping>
 </web-app>
