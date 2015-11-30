@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html ng-app="noticiasApp">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Cadastro</title>
+        <script type="text/javascript" charset="utf-8" src="angular.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="angular-animate.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="NoticiasController.js"></script>
+        <!-- Style --> <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+    </head>
+    <body ng-controller="NoticiasController as controller">
+        <h1>Cadastro de Posts</h1>
+        <div class="contact-form">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="titulo">Titulo:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="controller.titulo" id="titulo"
+                               type="text" name="titulo" value=""
+                               autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="post">Post:</label>
+                    <!--<textarea rows="4" cols="50" ng-model="controller.post"/>-->
+                </div>
+                <br/>
+                <div id="texto" style="color: white; font-size: 24px; text-align: center; background-color: #C64444;"></div>
+                
+            <textarea rows="4" cols="50" ng-model="controller.post" name="comment" form="usrform"></textarea>
+            <button ng-click="controller.addPost()">Cadastrar Post</button>
+        </div>
+    </body>
+</html>

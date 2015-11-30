@@ -28,7 +28,8 @@ public class LoginController extends HttpServlet {
             res.setContentType("application/json");
             res.getWriter().print("{\"success\":false}");
         }
-
+        req.getSession().setAttribute("usuario", usuario);
+        
         res.setContentType("application/json");
         res.getWriter().print(new UsuarioJSON().convertUser(usuario.getId(), usuario.getNome()));
 

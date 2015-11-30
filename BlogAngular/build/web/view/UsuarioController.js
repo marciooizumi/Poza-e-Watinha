@@ -4,16 +4,18 @@ angular.module("usuarioApp", ["ngAnimate"])
                 self.buscaNome = "";
                 self.buscaSenha = "";
                 self.buscaEmail = "";
+                self.users = [];
 
 
 
 //            self.frutas = [];
 //            self.frutas_removidas = [];
 
-//            $http.get("usuario", { params: { busca: self.busca} })
-//                 .then(function (response) {
-//                     self.frutas = response.data;
-//                 });
+//                $http.get("../usuario", {params: {busca: self.busca}})
+//                        .then(function (response) {
+//                            console.log("atualizando usuario");
+//                            self.users = response.data;
+//                        });
 
                 self.add = function () {
                     // document.getElementById("texto").innerHTML = "Preencha os campos corretamente";
