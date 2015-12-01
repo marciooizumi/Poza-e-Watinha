@@ -95,54 +95,53 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
+                        
+                        <!--                    </div>-->
+
                         <hr>
-                        <hr>
-                    </div>
-
-                    <hr>
 
 
-                    <!-- Posted Comments -->
+                        <!-- Posted Comments -->
 
-                    <!-- Comment -->
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object" src="http://placehold.it/64x64" alt="">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Start Bootstrap
-                                <small>August 25, 2014 at 9:30 PM</small>
-                            </h4>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </div>
-
-                    <!-- Comment -->
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object" src="http://placehold.it/64x64" alt="">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading">Start Bootstrap
-                                <small>August 25, 2014 at 9:30 PM</small>
-                            </h4>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            <!-- Nested Comment -->
-                            <div class="media">
-                                <a class="pull-left" href="#">
-                                    <img class="media-object" src="http://placehold.it/64x64" alt="">
-                                </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading">Nested Start Bootstrap
-                                        <small>August 25, 2014 at 9:30 PM</small>
-                                    </h4>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                </div>
+                        <!-- Comment -->
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="http://placehold.it/64x64" alt="">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Start Bootstrap
+                                    <small>August 25, 2014 at 9:30 PM</small>
+                                </h4>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                             </div>
-                            <!-- End Nested Comment -->
+                        </div>
+
+                        <!-- Comment -->
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="http://placehold.it/64x64" alt="">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Start Bootstrap
+                                    <small>August 25, 2014 at 9:30 PM</small>
+                                </h4>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                <!-- Nested Comment -->
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Nested Start Bootstrap
+                                            <small>August 25, 2014 at 9:30 PM</small>
+                                        </h4>
+                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                    </div>
+                                </div>
+                                <!-- End Nested Comment -->
+                            </div>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- Blog Sidebar Widgets Column -->
@@ -164,10 +163,10 @@
                     <div class="well" >
                         <h4>Lista de Usuários</h4>
                         <div class="row">
-                            <div class="col-lg-6" ng-repeat="usuario in controller.users" class="{{usuario.hidden}}">
+                            <div class="col-lg-6" ng-repeat="usuario in controller.users" >
                                 <ul class="list-unstyled">
                                     <li>
-                                        <a href="#">{{usuario.nome}}</a>
+                                        <a ng-click="controller.visita(usuario.nome)" href >{{usuario.nome}}</a>
                                     </li>
                                 </ul>
                             </div>

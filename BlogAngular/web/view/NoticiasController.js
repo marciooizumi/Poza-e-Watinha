@@ -8,6 +8,7 @@ angular.module("noticiasApp", ["ngAnimate"])
                 self.titulo = "";
                 self.usuarioAtualNome = "";
 
+
 //                $interval(function () {
 //                    $http.get("../usuario", {params: {busca: self.busca}})
 //                            .then(function (response) {
@@ -31,7 +32,7 @@ angular.module("noticiasApp", ["ngAnimate"])
                 self.addPost = function () {
                     console.log("titulo=" + self.titulo);
                     console.log("texto=" + self.post);
-                    
+
                     if (self.titulo === "" || self.titulo === null ||
                             self.post === "" || self.post === null) {
                         document.getElementById("texto").innerHTML = "Preencha os campos corretamente";
@@ -55,12 +56,22 @@ angular.module("noticiasApp", ["ngAnimate"])
                     }
                     //   }
                 };
-                
+
                 // listando usuarios
                 $http.get("../usuario", {params: {busca: self.busca}})
                         .then(function (response) {
                             console.log("atualizando usuario");
                             self.users = response.data;
                         });
+
+                self.visita = function (visita) {
+                    $http.get("../noticias", {params: {visitante: visita}})
+                            .then(function (response) {
+//                                console.log("atualizando posts");
+                                self.posts = response.data;
+//                                console.log(self.posts);
+                            });
+//                     console.log(visita);
+                };
 
             }])

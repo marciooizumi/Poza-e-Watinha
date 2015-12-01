@@ -17,7 +17,7 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         Usuario usuario = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("usuario");
-        System.out.println("usuario ");
+//        System.out.println("usuario ");
         HttpServletRequest rec = (HttpServletRequest) request;
         if (usuario == null
                 && !(rec.getRequestURI().equals("/BlogAngular/view/LoginController.js"))

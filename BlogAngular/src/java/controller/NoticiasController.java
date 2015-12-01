@@ -21,21 +21,36 @@ public class NoticiasController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Chegou no get noticias");
+       // System.out.println("Chegou no get noticias");
+
         PostModel pModel = new PostModel();
+        UsuarioModel uModel = new UsuarioModel();
         Usuario usu = (Usuario) request.getSession().getAttribute("usuario"),
                 visitante = (Usuario) request.getSession().getAttribute("visitante");
-
+//         visitante = uModel.verUsuario(request.getParameter("visitante"));
+//        System.out.println("esse é o visitante = " + visitante.getNome());
+        
+        request.getSession().setAttribute("visitante", uModel.verUsuario(request.getParameter("visitante")));
+        
+        if(visitante == usu){
+            System.out.println("visitante e usuario são iguais");
+           request.getSession().setAttribute("visitante", null);
+        }
+        
         if (visitante == null) {
             List<Post> lista = pModel.listarPosts(usu);
             response.setContentType("application/json");
             response.getWriter().print((new PostsJSON()).convertPosts(lista));
             System.out.println("Imprimindo o json" + (new PostsJSON()).convertPosts(lista));
-        }else{
+        } else {
             List<Post> lista = pModel.listarPosts(visitante);
             response.setContentType("application/json");
             response.getWriter().print((new PostsJSON()).convertPosts(lista));
-            System.out.println("Imprimindo o json" + (new PostsJSON()).convertPosts(lista));
+            System.out.println("Imprimindo o json do visitante" + (new PostsJSON()).convertPosts(lista));
+            
+            
+            
+            // response.sendRedirect("noticias");
         }
     }
 
