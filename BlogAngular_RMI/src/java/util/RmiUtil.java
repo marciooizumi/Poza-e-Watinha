@@ -1,6 +1,7 @@
 package util;
 
 
+import interfaces.IPostDAO;
 import interfaces.IUsuarioDAO;
 import java.rmi.AccessException;
 import java.rmi.NotBoundException;
@@ -20,5 +21,10 @@ public class RmiUtil {
 	public static IUsuarioDAO retornaUsuarioDAO() throws AccessException,
 			RemoteException, NotBoundException {
 		return (IUsuarioDAO) retornaRegistry().lookup("UsuarioDAO");
+	}
+        
+        public static IPostDAO retornaPostDAO() throws AccessException,
+			RemoteException, NotBoundException {
+		return (IPostDAO) retornaRegistry().lookup("PostDAO");
 	}
 }

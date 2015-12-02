@@ -7,6 +7,7 @@ angular.module("noticiasApp", ["ngAnimate"])
                 self.post = "";
                 self.titulo = "";
                 self.usuarioAtualNome = "";
+                self.usuarioCabecario = "";
 
 
 //                $interval(function () {
@@ -64,8 +65,9 @@ angular.module("noticiasApp", ["ngAnimate"])
                             self.users = response.data;
                         });
 
-                self.visita = function (visita) {
-                    $http.get("../noticias", {params: {visita: visita, controle: "sim"}})
+                //listando os posts da visita
+                self.visita = function (visitaId) {
+                    $http.get("../noticias", {params: {visitaId: visitaId, controle: "sim"}})
                             .then(function (response) {
 //                                console.log("atualizando posts");
                                 self.posts = response.data;
@@ -73,9 +75,35 @@ angular.module("noticiasApp", ["ngAnimate"])
                             });
 //                     console.log(visita);
                 };
-                
+
                 self.postsGo = function () {
                     window.location = "../view/CadastrarPosts.html";
+                };
+
+
+
+                //buscando nome para mostrar no cabeçario
+
+                $http.post("../usuario", "&method=procurar", {
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                }).then(function (response) {
+                    self.usuarioCabecario = response.data;
+                });
+                
+                
+                //funcao para logout
+                self.logout = function () {
+                    console.log("entrou no logou - js")
+                    $http.post("../login", "&method=logout", {
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        }
+                    });
+                    window.location = "../";
+
+
                 };
 
             }])

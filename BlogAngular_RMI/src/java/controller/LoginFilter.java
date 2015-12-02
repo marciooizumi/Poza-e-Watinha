@@ -20,12 +20,12 @@ public class LoginFilter implements Filter {
 //        System.out.println("usuario ");
         HttpServletRequest rec = (HttpServletRequest) request;
         if (usuario == null
-                && !(rec.getRequestURI().equals("/BlogAngular/view/LoginController.js"))
-                && !(rec.getRequestURI().equals("/BlogAngular/view/cadastro.html"))
-                && !(rec.getRequestURI().equals("/BlogAngular/view/LoginController.js"))
-                && !(rec.getRequestURI().equals("/BlogAngular/view/angular.min.js"))
-                && !(rec.getRequestURI().equals("/BlogAngular/view/angular-animate.min.js"))
-                && !(rec.getRequestURI().equals("/BlogAngular/view/UsuarioController.js"))
+                && !(rec.getRequestURI().equals("/BlogAngular_RMI/view/LoginController.js"))
+                && !(rec.getRequestURI().equals("/BlogAngular_RMI/view/cadastro.html"))
+                && !(rec.getRequestURI().equals("/BlogAngular_RMI/view/LoginController.js"))
+                && !(rec.getRequestURI().equals("/BlogAngular_RMI/view/angular.min.js"))
+                && !(rec.getRequestURI().equals("/BlogAngular_RMI/view/angular-animate.min.js"))
+                && !(rec.getRequestURI().equals("/BlogAngular_RMI/view/UsuarioController.js"))
            ) {
 
             System.out.println("aqui esta " + ((HttpServletRequest) request).getRequestURI());

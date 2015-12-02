@@ -5,6 +5,7 @@
  */
 package controller;
 
+import interfaces.IUsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -22,17 +23,18 @@ import model.UsuarioModel;
  */
 @WebServlet(name = "VisitasController", urlPatterns = {"/visita"})
 public class VisitasController extends HttpServlet {
+        IUsuarioDAO usuModel;
 
     @Override
     protected void doGet(HttpServletRequest req,
                          HttpServletResponse res)
             throws ServletException, IOException {
         System.out.println("chegou o visitante = " + req.getParameter("nome"));
-        UsuarioModel usuModel = new UsuarioModel();
+//        UsuarioModel usuModel = new UsuarioModel();//usado antes do RMI
         if(req.getSession().getAttribute("usuario") == req.getSession().getAttribute("visitante"))
             req.getSession().setAttribute("visitante", null);
         else 
-            req.getSession().setAttribute("visitante", usuModel.verUsuario(req.getParameter("nome")));
+            req.getSession().setAttribute("visitante", usuModel.buscarPorNome(req.getParameter("nome")));
         RequestDispatcher rd = req.getRequestDispatcher("noticias");
         rd.forward(req, res);
     }

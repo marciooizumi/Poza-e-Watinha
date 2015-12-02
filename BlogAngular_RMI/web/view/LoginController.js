@@ -27,17 +27,7 @@ angular.module("loginApp", ["ngAnimate"])
 
                 };
 
-                self.logout = function () {
-                    
-                    $http.post("login", "&method=logout", {
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded"
-                        }
-                    });
-//                    window.location = "../view/login.html";
-
-
-                };
+                
 
 
 
