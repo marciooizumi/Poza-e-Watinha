@@ -65,13 +65,17 @@ angular.module("noticiasApp", ["ngAnimate"])
                         });
 
                 self.visita = function (visita) {
-                    $http.get("../noticias", {params: {visitante: visita}})
+                    $http.get("../noticias", {params: {visita: visita, controle: "sim"}})
                             .then(function (response) {
 //                                console.log("atualizando posts");
                                 self.posts = response.data;
 //                                console.log(self.posts);
                             });
 //                     console.log(visita);
+                };
+                
+                self.postsGo = function () {
+                    window.location = "../view/CadastrarPosts.html";
                 };
 
             }])

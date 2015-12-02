@@ -21,35 +21,41 @@ public class NoticiasController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       // System.out.println("Chegou no get noticias");
+        System.out.println("Este é o visitante atual = " + (Usuario) request.getSession().getAttribute("visitante") + ""
+                + " \n e este é o usuario =" + (Usuario) request.getSession().getAttribute("usuario"));
 
         PostModel pModel = new PostModel();
         UsuarioModel uModel = new UsuarioModel();
+
         Usuario usu = (Usuario) request.getSession().getAttribute("usuario"),
                 visitante = (Usuario) request.getSession().getAttribute("visitante");
+
 //         visitante = uModel.verUsuario(request.getParameter("visitante"));
 //        System.out.println("esse é o visitante = " + visitante.getNome());
-        
-        request.getSession().setAttribute("visitante", uModel.verUsuario(request.getParameter("visitante")));
-        
-        if(visitante == usu){
-            System.out.println("visitante e usuario são iguais");
-           request.getSession().setAttribute("visitante", null);
+        System.out.println("Esse é o parametro controle = " + request.getParameter("controle"));
+
+        if (request.getParameter("controle") != null) {
+            request.getSession().setAttribute("visitante", uModel.verUsuario(request.getParameter("visita")));
         }
-        
+
+        if (visitante != null) {
+            if (visitante.getId() == usu.getId()) {
+                System.out.println("visitante e usuario são iguais - noticiasController");
+                request.getSession().setAttribute("visitante", null);
+            }
+        }
+
         if (visitante == null) {
             List<Post> lista = pModel.listarPosts(usu);
             response.setContentType("application/json");
             response.getWriter().print((new PostsJSON()).convertPosts(lista));
-            System.out.println("Imprimindo o json" + (new PostsJSON()).convertPosts(lista));
+//            System.out.println("Imprimindo o json" + (new PostsJSON()).convertPosts(lista));
         } else {
             List<Post> lista = pModel.listarPosts(visitante);
             response.setContentType("application/json");
             response.getWriter().print((new PostsJSON()).convertPosts(lista));
             System.out.println("Imprimindo o json do visitante" + (new PostsJSON()).convertPosts(lista));
-            
-            
-            
+
             // response.sendRedirect("noticias");
         }
     }
@@ -63,7 +69,9 @@ public class NoticiasController extends HttpServlet {
 
         Boolean result = false;
         System.out.println("Nome: " + request.getParameter("nome"));
+        
         if (request.getParameter("method").equals("adicionar")) {
+            request.getSession().setAttribute("visitante", null);
             result = pModel.inserir((Usuario) (request.getSession().getAttribute("usuario")),
                     request.getParameter("titulo"),
                     request.getParameter("post"));
