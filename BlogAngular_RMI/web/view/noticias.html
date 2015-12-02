@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+<html ng-app="noticiasApp" ng-app="usuarioApp">
+    <head>
+        <title>Página de notícias</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+        <link href="../css/blog-post.css" rel="stylesheet">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <script type="text/javascript" charset="utf-8" src="angular.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="angular-animate.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="NoticiasController.js"></script>
+
+    </head>
+    <!--    <body ng-controller="NoticiasController as controller" >
+            <header>
+                <h1>Notícias do dia</h1>
+            </header>
+            <div >
+                <ul>
+                    <li ng-repeat="usuario in controller.users" class="{{usuario.hidden}}" ajax="true">
+                       {{usuario.nome}}
+                    </li>
+                </ul>
+            </div>
+        </body>-->
+
+    <body ng-controller="NoticiasController as controller" >
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Start Bootstrap</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a ng-click="controller.postsGo()" href="#">New Post</a>
+                        </li>
+                        <li>
+                            <a href ng-click="controller.logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Blog Post Content Column -->
+                <div class="col-lg-8">
+
+                    <!-- Blog Post -->
+
+                    <!-- Title -->
+                    <h1>Notícias do dia</h1>
+
+
+
+
+                    <!-- Listando todos comentários de usuário atual -->
+                    <div ng-repeat="post in controller.posts" class="{{post.hidden}}">
+                        <!-- Date/Time -->
+                        <p><span class="glyphicon glyphicon-time"></span> Postado em: {{post.data}}</p>
+                        <!-- Post Content -->
+                        <p class="lead"><h1>{{post.titulo}}</h1></p>
+                        <p>{{post.conteudo}}</p>
+
+                        <hr>
+                        <!-- Blog Comments -->
+
+                        <!-- Comments Form -->
+                        <div class="well">
+                            <h4>Leave a Comment:</h4>
+                            <form role="form">
+                                <div class="form-group">
+                                    <textarea class="form-control" ></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                        
+                        <!--                    </div>-->
+
+                        <hr>
+
+
+                        <!-- Posted Comments -->
+
+                        <!-- Comment -->
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="http://placehold.it/64x64" alt="">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Start Bootstrap
+                                    <small>August 25, 2014 at 9:30 PM</small>
+                                </h4>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            </div>
+                        </div>
+
+                        <!-- Comment -->
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="http://placehold.it/64x64" alt="">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading">Start Bootstrap
+                                    <small>August 25, 2014 at 9:30 PM</small>
+                                </h4>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                <!-- Nested Comment -->
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Nested Start Bootstrap
+                                            <small>August 25, 2014 at 9:30 PM</small>
+                                        </h4>
+                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                    </div>
+                                </div>
+                                <!-- End Nested Comment -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Sidebar Widgets Column -->
+                <div class="col-md-4">
+
+                    <!-- Blog Search Well -->
+                    <div class="well">
+                        <h4>Blog Search</h4>
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">Procurar</button>
+                            </span>
+                        </div>
+                        <!-- /.input-group -->
+                    </div>
+
+                    <!-- Blog Categories Well -->
+                    <div class="well" >
+                        <h4>Lista de Usuários</h4>
+                        <div class="row">
+                            <div class="col-lg-6" ng-repeat="usuario in controller.users" >
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a ng-click="controller.visita(usuario.nome)" href >{{usuario.nome}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                    </div>
+
+                    <!-- Side Widget Well -->
+                    <div class="well">
+                        <h4>Side Widget Well</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.row -->
+
+            <hr>
+
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Copyright &copy; Developed by Márcio e Marcelo</p>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </footer>
+
+        </div>
+    </body>
+</html>

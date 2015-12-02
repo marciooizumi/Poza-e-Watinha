@@ -1,0 +1,58 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html ng-app="loginApp">
+    <head>
+        <title>Blog Abobrinha</title>
+        <!-- For-Mobile-Apps -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="User Icon Login Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!-- //For-Mobile-Apps -->
+        <!-- Style --> <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+        <script type="text/javascript" charset="utf-8" src="js/angular.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/angular-animate.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="view/LoginController.js"></script>
+        <script></script>
+    </head>
+    <body ng-controller="LoginController as logController">
+        <div class="container">
+            <h1>Bem-vindo ao Blog Abobrinha</h1>
+            <div class="contact-form">
+                <div class="profile-pic">
+                    <img src="images/courgette-37213_1280.png" width="140px" alt="User Icon"/>
+                </div>	 
+                <form>
+                    <div class="signin">
+                        <input ng-model="logController.login"
+                               type="text" 
+                               class="user" 
+                               value="Username" 
+                               onfocus="this.value = '';" 
+                               onblur="if (this.value == '') {this.value = 'Username'; }" />
+                        <input ng-model="logController.senha" 
+                               type="password" 
+                               class="pass" 
+                               value="Password" 
+                               onfocus="this.value = '';" 
+                               onblur="if (this.value == '') {this.value = 'Password'; }" />
+                        <p><a href="view/cadastro.html">Forgot Password?</a></p>		  
+
+                        <!--<p>{{logController.msg}}</p>-->
+                        <div id="texto" style="color: white; font-size: 30px; background-color: #C64444;" ></div>
+                    </div>	 
+                    <input type="submit" ng-click="logController.verLogin()" value="Login" />
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Design by Márcio, Marcelo e Carol</p>
+        </div>
+    </body>
+</html>

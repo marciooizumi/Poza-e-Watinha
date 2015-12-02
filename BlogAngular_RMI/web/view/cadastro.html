@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html ng-app="usuarioApp">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Cadastro</title>
+        <script type="text/javascript" charset="utf-8" src="angular.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="angular-animate.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="UsuarioController.js"></script>
+        <!-- Style --> <link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+    </head>
+    <body ng-controller="UsuarioController as controller">
+        <h1>Cadastro de usuários</h1>
+        <!--        <input ng-model="controller.busca"
+                       ng-keypress="controller.add($event)"
+                       ng-keyup="controller.search()"
+                       type="text" name="nome" value=""
+                       autocomplete="off"/>
+                <ul>
+                    <li ng-repeat="fruta in controller.frutas" class="{{fruta.hidden}}">
+                        {{fruta.nome}}
+                        <a ng-click="controller.remove(fruta)" href="#">[remover]</a>
+                        <a ng-click="controller.editar(fruta)"
+                           onclick="document.querySelector('input').focus()" href="#">[editar]</a>
+                    </li>
+                </ul>
+        -->
+        <div class="contact-form">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nome">Nome:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="controller.buscaNome" id="nome"
+                               type="text" name="nome" value=""
+                               autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Password:</label>
+                    <div class="col-sm-10"> 
+                        <input ng-model="controller.buscaSenha" id="pwd"
+                               type="password" name="senha" value=""
+                               autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nome">Email:</label>
+                    <div class="col-sm-10">
+                        <input ng-model="controller.buscaEmail" id="email"
+                               type="text" name="email" value=""
+                               autocomplete="off"/>
+                    </div>
+                </div>
+                <br/>
+                <div id="texto" style="color: white; font-size: 24px; text-align: center; background-color: #C64444;"></div>
+                <input type="submit" value="Cadastrar" ng-click="controller.add()"/>
+            </form>
+            <p><a href="../" style="color: black;">Go to Login</a></p>
+        </div>
+    </body>
+</html>
